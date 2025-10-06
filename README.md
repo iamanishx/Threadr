@@ -1,5 +1,5 @@
 # Threadr 
-## Omegala is no longer available; try this instead [Threadr](https://threadr.mbxd.xyz)
+#### Omegle is no longer available; try this instead [Threadr](https://threadr.mbxd.xyz)
 
 To install dependencies:
 
