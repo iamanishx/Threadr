@@ -1,14 +1,15 @@
 # railway.toml
+
 [build]
 builder = "NIXPACKS"
+buildCommand = "bun install && bun run build"
 
-# Define the services
-[services.api]
-root = "apps/api"
-start = "bun run start"
-build = "bun run build"
+[services.backend]
+root = "apps/backend"
+start = "bun run index.ts"
+build = "bun install"
 
-[services.web]
-root = "apps/web"
-start = "bun run start"
+[services.frontend]
+root = "apps/frontend"
 build = "bun run build"
+start = "bun run start"
