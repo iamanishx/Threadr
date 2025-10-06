@@ -1,0 +1,295 @@
+$ next dev --turbopack
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\manis\bun.lock as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\manis\omegle\apps\frontend\bun.lock
+   * C:\Users\manis\omegle\bun.lock
+
+   ▲ Next.js 15.5.4 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.103:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1057ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.1s
+ GET / 200 in 2433ms
+🔌 Socket connected: kvWqGYypeK4OXVfJAAAF
+ ✓ Compiled /favicon.ico in 194ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 504ms
+ GET / 200 in 223ms
+🔌 Socket connected: tpAUdEYcgIZn-o2IAAAL
+🔌 Socket connected: x7RQ-g2cUmS4amdMAAAR
+ GET / 200 in 219ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 371ms
+ ✓ Compiled in 619ms
+ ✓ Compiled / in 166ms
+ GET / 200 in 551ms
+ GET / 200 in 537ms
+🔌 Socket connected: bcp8h-2hZzHbAf55AAAX
+🔌 Socket connected: qhz5pxsz0U79FJAUAAAa
+🔌 Socket connected: pjvhZM7t6AQlrzWiAAAc
+🔌 Socket connected: 3vIpAI71RRXvHAIXAAAe
+ GET / 200 in 963ms
+🔌 Socket connected: Vath6uio-UruzMzxAAAf
+ GET / 200 in 961ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 296ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 293ms
+ ✓ Compiled in 187ms
+ ✓ Compiled in 61ms
+ ✓ Compiled in 374ms
+ ✓ Compiled in 74ms
+ ✓ Compiled in 385ms
+ GET / 200 in 346ms
+🔌 Socket connected: M5S9F1-5Np-mDcQdAAAp
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 309ms
+🔌 Socket connected: qXCu70VHgEtTR7oWAAAv
+ GET / 200 in 148ms
+🔌 Socket connected: CVSyDFYVgfdmEZEBAAA1
+ GET / 200 in 256ms
+ ✓ Compiled in 332ms
+ ✓ Compiled in 185ms
+ ✓ Compiled in 225ms
+ ✓ Compiled in 79ms
+ ✓ Compiled in 94ms
+ ✓ Compiled in 283ms
+ GET / 200 in 886ms
+🔌 Socket connected: beQsqGismfb7pRjjAAA7
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 317ms
+ ✓ Compiled in 61ms
+ ✓ Compiled in 31ms
+ ✓ Compiled in 43ms
+ GET / 200 in 397ms
+🔌 Socket connected: bj81OWIAeMh_vysfAABB
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 283ms
+ ✓ Compiled in 70ms
+ GET / 200 in 585ms
+🔌 Socket connected: EN9vlArQdCHSTBCqAABH
+ ✓ Compiled in 55ms
+ GET / 200 in 291ms
+🔌 Socket connected: ftXB_jE04UutMkg-AABN
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 298ms
+ ✓ Compiled in 48ms
+ GET / 200 in 317ms
+🔌 Socket connected: J8yzy53nl_K04Q7uAABX
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 292ms
+ GET / 200 in 101ms
+🔌 Socket connected: 5H27tk1pVsSJhQPaAABd
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 369ms
+ ✓ Compiled in 41ms
+ ✓ Compiled in 35ms
+ ✓ Compiled in 50ms
+ ✓ Compiled / in 62ms
+ GET / 200 in 242ms
+ ✓ Compiled in 52ms
+ ✓ Compiled in 34ms
+ ✓ Compiled in 44ms
+ ✓ Compiled / in 45ms
+ GET / 200 in 107ms
+ GET / 200 in 309ms
+🔌 Socket connected: vyfOfJ0S3zGXQFR3AABj
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 294ms
+ ✓ Compiled in 126ms
+ ✓ Compiled in 60ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 334ms
+🔌 Socket connected: l2GUpEfwRYOdzeiSAABp
+ GET / 200 in 522ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 345ms
+ ✓ Compiled in 47ms
+ ✓ Compiled in 59ms
+ ✓ Compiled in 46ms
+ GET / 200 in 352ms
+🔌 Socket connected: 5oGGRDCk6B_mXgD9AABv
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 301ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 279ms
+ ✓ Compiled in 67ms
+ GET / 200 in 380ms
+🔌 Socket connected: Rcaxf0-UxgUxfG69AAB1
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 301ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 282ms
+ ✓ Compiled in 61ms
+ ✓ Compiled in 41ms
+ ✓ Compiled in 46ms
+🔌 Socket connected: mdY8rxe4UHZCjjV2AAB7
+ GET / 200 in 380ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 281ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 279ms
+ ✓ Compiled in 133ms
+ ✓ Compiled in 77ms
+🔌 Socket connected: tHjiMJglh9q5fCg3AACB
+ GET / 200 in 614ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 401ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 355ms
+ ✓ Compiled in 87ms
+ GET / 200 in 441ms
+🔌 Socket connected: mjBC2sPYFgsacTPQAACH
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 324ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 311ms
+ ✓ Compiled in 71ms
+ ✓ Compiled in 61ms
+ GET / 200 in 475ms
+🔌 Socket connected: m2XK1P1Kq5YTYEzvAACN
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 304ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 311ms
+ ✓ Compiled in 62ms
+ ✓ Compiled in 37ms
+ ✓ Compiled in 35ms
+ ✓ Compiled in 57ms
+ GET / 200 in 387ms
+🔌 Socket connected: 6BqZipT18T9Ap8p7AACT
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 288ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 280ms
+ ✓ Compiled in 46ms
+ ✓ Compiled in 70ms
+🔌 Socket connected: ijjZ8_zkqL3Q9N7mAACZ
+ GET / 200 in 378ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 288ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 277ms
+ ✓ Compiled in 49ms
+ ✓ Compiled in 36ms
+ GET / 200 in 329ms
+🔌 Socket connected: 9tQu9_IowQPR4oGXAACf
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 345ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 342ms
+ ✓ Compiled in 75ms
+🔌 Socket connected: CTbYJjEwv29udnmaAACl
+ GET / 200 in 441ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 290ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 280ms
+ ✓ Compiled in 44ms
+ GET / 200 in 333ms
+🔌 Socket connected: pROglgwciAGbTpKcAACr
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 335ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 278ms
+🔌 Socket connected: yXO4J11O3koTj9SLAACx
+ GET / 200 in 121ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 289ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 280ms
+ ✓ Compiled in 49ms
+ ✓ Compiled in 49ms
+ ✓ Compiled / in 68ms
+ GET / 200 in 234ms
+ GET / 200 in 138ms
+ ✓ Compiled in 53ms
+ GET / 200 in 384ms
+🔌 Socket connected: r2SVlzM-DaI5vrSOAAC3
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 337ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 283ms
+ ✓ Compiled in 55ms
+ ✓ Compiled in 58ms
+ ✓ Compiled / in 47ms
+ GET / 200 in 123ms
+ GET / 200 in 105ms
+ ✓ Compiled in 259ms
+ GET / 200 in 613ms
+🔌 Socket connected: oZODB_Os58JXsXbcAAC9
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 290ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 282ms
+ ✓ Compiled in 99ms
+ GET / 200 in 422ms
+🔌 Socket connected: Pa8k_xR4vuN4H9bxAADD
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 327ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 301ms
+ ✓ Compiled in 65ms
+ ✓ Compiled in 53ms
+ ✓ Compiled in 55ms
+ ✓ Compiled in 43ms
+ ✓ Compiled in 45ms
+ ✓ Compiled / in 92ms
+ GET / 200 in 362ms
+ GET / 200 in 137ms
+ ✓ Compiled in 39ms
+ ✓ Compiled in 47ms
+ ✓ Compiled in 42ms
+ ✓ Compiled in 54ms
+ ✓ Compiled in 50ms
+ ✓ Compiled in 62ms
+🔌 Socket connected: IY-lxX6Lk7DlkIMJAADJ
+ GET / 200 in 359ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 297ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 281ms
+ ✓ Compiled in 40ms
+ ✓ Compiled in 62ms
+ ✓ Compiled in 89ms
+ ✓ Compiled in 28ms
+ ✓ Compiled in 45ms
+ ✓ Compiled in 390ms
+ ✓ Compiled in 60ms
+ ✓ Compiled in 41ms
+ ✓ Compiled in 46ms
+ ✓ Compiled in 40ms
+ ✓ Compiled in 30ms
+ ✓ Compiled in 35ms
+ GET / 200 in 320ms
+🔌 Socket connected: Tlyclr5-Dg_fu7a9AADP
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 349ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 287ms
+ ✓ Compiled in 57ms
+ ✓ Compiled in 63ms
+ ✓ Compiled in 55ms
+ ✓ Compiled in 57ms
+ ✓ Compiled in 53ms
+ ✓ Compiled in 51ms
+ ✓ Compiled in 52ms
+ ✓ Compiled in 87ms
+ ✓ Compiled in 231ms
+ ✓ Compiled in 65ms
+ GET / 200 in 420ms
+🔌 Socket connected: Dux-QNyvhy7HNsrRAADV
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 311ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 278ms
+ ✓ Compiled in 61ms
+🔌 Socket connected: Fcd1UPoYBqt30ys7AADb
+ GET / 200 in 745ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 424ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 344ms
+ GET / 200 in 147ms
+🔌 Socket connected: qMwxRfA80BF-s9XhAADh
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 372ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 372ms
+ ✓ Compiled in 35ms
+ GET / 200 in 333ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 375ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 344ms
+ ✓ Compiled in 41ms
+ ✓ Compiled in 163ms
+ ✓ Compiled / in 71ms
+ GET / 200 in 242ms
+ ⨯ ReferenceError: Geist is not defined
+    at __TURBOPACK__module__evaluation__ (src\app\layout.tsx:6:19)
+  4 | import { SocketProvider } from "@/providers/SocketProvider";
+  5 |
+> 6 | const geistSans = Geist({
+    |                   ^
+  7 |   variable: "--font-geist-sans",
+  8 |   subsets: ["latin"],
+  9 | }); {
+  digest: '1993761012'
+}
+ GET / 500 in 746ms
+ GET /favicon.ico 200 in 295ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload when ./omegle/apps/frontend/src/app/layout.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled / in 187ms
+ GET / 200 in 504ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 270ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 318ms
+ ✓ Compiled in 323ms
+ ✓ Compiled / in 318ms
+ GET / 200 in 678ms
+ GET / 200 in 495ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 395ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 284ms
+ GET / 200 in 107ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 365ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 382ms
+ GET / 200 in 209ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 338ms
+ ✓ Compiled in 103ms
+ ✓ Compiled / in 108ms
+ GET / 200 in 626ms
