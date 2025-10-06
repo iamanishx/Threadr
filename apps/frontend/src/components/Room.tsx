@@ -394,7 +394,6 @@ export default function Room() {
                   ref={remoteVideoRef}
                   autoPlay
                   playsInline
-                  muted
                   className="w-full h-full object-cover"
                 />
               ) : (
