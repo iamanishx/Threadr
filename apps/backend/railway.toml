@@ -1,0 +1,6 @@
+# Railway Configuration for Backend
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "bun run start"
