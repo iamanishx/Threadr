@@ -1,0 +1,14 @@
+# Disable Nixpacks auto-detection
+# We're using a custom Dockerfile instead
+
+[phases.setup]
+nixPkgs = []
+
+[phases.build]
+cmds = []
+
+[phases.install]
+cmds = []
+
+[start]
+cmd = "echo 'Use Dockerfile instead'"
