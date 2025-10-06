@@ -49,7 +49,6 @@ export default function Room() {
         setLocalStream(stream);
         setConnectionState("ready");
         
-        // Auto-start matching after media is ready
         if (!hasAutoStartedRef.current) {
           hasAutoStartedRef.current = true;
           setTimeout(() => {
@@ -80,6 +79,16 @@ export default function Room() {
       localVideoRef.current.srcObject = localStream;
     }
   }, [localStream]);
+
+  // Handle remote video playback
+  useEffect(() => {
+    if (remoteStream && remoteVideoRef.current) {
+      remoteVideoRef.current.srcObject = remoteStream;
+      remoteVideoRef.current.play().catch(err => {
+        console.warn("Remote video autoplay failed:", err);
+      });
+    }
+  }, [remoteStream]);
 
   // Handle match found
   const handleMatchFound = useCallback(
@@ -385,6 +394,7 @@ export default function Room() {
                   ref={remoteVideoRef}
                   autoPlay
                   playsInline
+                  muted
                   className="w-full h-full object-cover"
                 />
               ) : (
