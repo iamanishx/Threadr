@@ -1,0 +1,14 @@
+# railway.toml
+[build]
+builder = "NIXPACKS"
+
+# Define the services
+[services.api]
+root = "apps/api"
+start = "bun run start"
+build = "bun run build"
+
+[services.web]
+root = "apps/web"
+start = "bun run start"
+build = "bun run build"
