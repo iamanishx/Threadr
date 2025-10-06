@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "type": "module",
-  "scripts": {
+  "scripts": {  
     "dev": "bun run index.ts",
     "start": "bun run index.ts",
     "build": "echo 'Build backend'"
