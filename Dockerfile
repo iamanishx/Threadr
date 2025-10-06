@@ -7,21 +7,21 @@ FROM base AS deps
 COPY package.json bun.lock* ./
 COPY apps/backend/package.json ./apps/backend/
 COPY apps/frontend/package.json ./apps/frontend/
-RUN bun install --frozen-lockfile
+RUN bun install
 
 # Backend builder
 FROM base AS backend-builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY apps/backend ./apps/backend
 WORKDIR /app/apps/backend
-RUN bun install --frozen-lockfile
+RUN bun install
 
 # Frontend builder
 FROM base AS frontend-builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY apps/frontend ./apps/frontend
 WORKDIR /app/apps/frontend
-RUN bun install --frozen-lockfile
+RUN bun install
 
 # Build frontend
 ARG NEXT_PUBLIC_SOCKET_URL
