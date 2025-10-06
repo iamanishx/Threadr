@@ -6,8 +6,7 @@ buildCommand = "bun install && bun run build"
 
 [services.backend]
 root = "apps/backend"
-start = "bun run index.ts"
-build = "bun install"
+start = "bun run start"
 
 [services.frontend]
 root = "apps/frontend"
