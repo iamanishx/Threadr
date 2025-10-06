@@ -40,7 +40,6 @@ class PeerService extends EventEmitter {
   private _streamTracking: Map<string, StreamTrackingInfo> = new Map();
   private remotePeerId: string | null = null;
   private iceTimeout: NodeJS.Timeout | null = null;
-  private lastUsedConfig: "stun" | "turn" | null = null;
 
   constructor() {
     super();
@@ -184,94 +183,55 @@ class PeerService extends EventEmitter {
 
   private async initializeConnection(): Promise<void> {
     try {
-      await this.initializeWithStun();
+      // Try TURN first with STUN fallback for better NAT traversal
+      await this.initializeWithTurnAndStun();
     } catch (error) {
-      console.log("STUN conn. failed, trying turn fallback", error);
-      try {
-        await this.initializeWithTurn();
-      } catch (stunError) {
-        console.error("Both TURN and STUN initialization failed");
-        throw stunError;
-      }
-    }
-  }
-
-  private async initializeWithStun(): Promise<void> {
-    try {
-      const expressTurnUsername = process.env.NEXT_PUBLIC_EXPRESSTURN_USERNAME;
-      const expressTurnCredential = process.env.NEXT_PUBLIC_EXPRESSTURN_CREDENTIAL;
-
-      const config: RTCConfig = {
-        iceServers: [
-          {
-            urls: [
-              "stun:stun1.l.google.com:19302",
-              "stun:stun2.l.google.com:19302",
-              "stun:stun3.l.google.com:19302",
-              "stun:stun4.l.google.com:19302",
-              "stun:stun.cloudflare.com:3478",
-              "stun:stun.relay.metered.ca:80",
-            ],
-          },
-          ...(expressTurnUsername
-            ? [
-                {
-                  urls: ["turn:relay1.expressturn.com:3478"],
-                  username: expressTurnUsername,
-                  credential: expressTurnCredential!,
-                },
-              ]
-            : []),
-        ],
-        iceCandidatePoolSize: 10,
-        bundlePolicy: "max-bundle",
-        rtcpMuxPolicy: "require",
-      };
-
-      await this.createPeerConnection(config);
-    } catch (error) {
-      console.error("Error initializing STUN connection:", error);
+      console.error("Connection initialization failed", error);
       throw error;
     }
   }
 
-  private async initializeWithTurn(): Promise<void> {
+  private async initializeWithTurnAndStun(): Promise<void> {
     try {
       const credUrl = process.env.NEXT_PUBLIC_TURN_CRED_URL;
-      if (!credUrl) {
-        throw new Error("TURN credential URL not configured");
-      }
-
-      const response = await fetch(credUrl);
-      const cloudflareCredentials: CloudflareCredentials = await response.json();
-
+      
       const iceServers: RTCIceServer[] = [
         {
-          urls: cloudflareCredentials.urls,
-          username: cloudflareCredentials.username,
-          credential: cloudflareCredentials.credential,
+          urls: [
+            "stun:stun1.l.google.com:19302",
+            "stun:stun2.l.google.com:19302",
+            "stun:stun.cloudflare.com:3478",
+          ],
         },
       ];
 
-      const meteredUsername = process.env.NEXT_PUBLIC_METERED_USERNAME;
-      const meteredCredential = process.env.NEXT_PUBLIC_METERED_CREDENTIAL;
+      if (credUrl) {
+        try {
+          const response = await fetch(credUrl);
+          const cloudflareCredentials: CloudflareCredentials = await response.json();
+          
+          iceServers.push({
+            urls: cloudflareCredentials.urls,
+            username: cloudflareCredentials.username,
+            credential: cloudflareCredentials.credential,
+          });
+        } catch (err) {
+          console.warn("Failed to get Cloudflare TURN credentials:", err);
+        }
+      }
 
-      if (meteredUsername) {
+      const expressTurnUsername = process.env.NEXT_PUBLIC_EXPRESSTURN_USERNAME;
+      const expressTurnCredential = process.env.NEXT_PUBLIC_EXPRESSTURN_CREDENTIAL;
+      if (expressTurnUsername) {
         iceServers.push({
-          urls: [
-            "turn:standard.relay.metered.ca:80",
-            "turn:standard.relay.metered.ca:80?transport=tcp",
-            "turn:standard.relay.metered.ca:443",
-            "turns:standard.relay.metered.ca:443?transport=tcp",
-          ],
-          username: meteredUsername,
-          credential: meteredCredential!,
+          urls: ["turn:relay1.expressturn.com:3478"],
+          username: expressTurnUsername,
+          credential: expressTurnCredential!,
         });
       }
 
       const config: RTCConfig = {
         iceServers,
-        iceTransportPolicy: "relay",
         iceCandidatePoolSize: 10,
         bundlePolicy: "max-bundle",
         rtcpMuxPolicy: "require",
@@ -279,7 +239,7 @@ class PeerService extends EventEmitter {
 
       await this.createPeerConnection(config);
     } catch (error) {
-      console.error("Error initializing mixed TURN:", error);
+      console.error("Error initializing connection:", error);
       throw error;
     }
   }
@@ -454,28 +414,7 @@ class PeerService extends EventEmitter {
     if (this.isReconnecting) {
       return;
     }
-    if (this.reconnectAttempts === 0 && this.lastUsedConfig !== "turn") {
-      this.isReconnecting = true;
-      this.reconnectAttempts++;
-
-      try {
-        const currentRemotePeer = this.remotePeerId;
-        const currentRoom = this.roomId;
-        await this.cleanup();
-        await this.initializeWithTurn();
-        this.lastUsedConfig = "turn";
-        this.remotePeerId = currentRemotePeer;
-        this.roomId = currentRoom;
-        if (this.remotePeerId && this.roomId) {
-          this.emit("reconnectCall");
-        }
-        this.isReconnecting = false;
-        return;
-      } catch (error) {
-        console.error("TURN fallback failed:", error);
-        this.isReconnecting = false;
-      }
-    }
+    
     if (this.reconnectAttempts >= this.maxReconnectAttempts) {
       console.error("Max reconnection attempts reached");
       this.emit("error", {
@@ -488,17 +427,18 @@ class PeerService extends EventEmitter {
     this.isReconnecting = true;
     this.reconnectAttempts++;
     const delay = Math.min(1000 * Math.pow(2, this.reconnectAttempts - 1), 10000);
+    
     setTimeout(async () => {
       try {
+        const currentRemotePeer = this.remotePeerId;
+        const currentRoom = this.roomId;
+        
         await this.cleanup();
-        if (this.reconnectAttempts % 2 === 0) {
-          await this.initializeWithTurn();
-          this.lastUsedConfig = "turn";
-        } else {
-          await this.initializeWithStun();
-          this.lastUsedConfig = "stun";
-        }
-
+        await this.initializeWithTurnAndStun();
+        
+        this.remotePeerId = currentRemotePeer;
+        this.roomId = currentRoom;
+        
         if (this.remotePeerId && this.roomId) {
           this.emit("reconnectCall");
         }
