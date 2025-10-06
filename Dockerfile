@@ -2,28 +2,28 @@
 FROM oven/bun:1.2.23 AS base
 WORKDIR /app
 
-# Dependencies stage
+# Dependencies stage - Install all workspace dependencies
 FROM base AS deps
 COPY package.json bun.lock* ./
 COPY apps/backend/package.json ./apps/backend/
 COPY apps/frontend/package.json ./apps/frontend/
 RUN bun install
 
-# Backend builder
+# Backend builder - Build backend application
 FROM base AS backend-builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY apps/backend ./apps/backend
 WORKDIR /app/apps/backend
 RUN bun install
 
-# Frontend builder
+# Frontend builder - Build Next.js application
 FROM base AS frontend-builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY apps/frontend ./apps/frontend
 WORKDIR /app/apps/frontend
 RUN bun install
 
-# Build frontend
+# Build frontend with environment variables
 ARG NEXT_PUBLIC_SOCKET_URL
 ENV NEXT_PUBLIC_SOCKET_URL=${NEXT_PUBLIC_SOCKET_URL}
 RUN bun run build
