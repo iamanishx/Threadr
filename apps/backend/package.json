@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun run index.ts",
+    "start": "bun run index.ts",
     "build": "echo 'Build backend'"
   },
   "dependencies": {
