@@ -7,7 +7,6 @@ const fastify = Fastify({
   logger: true,
 });
 
-// Register CORS
 fastify.register(cors, {
   origin: [
     "http://localhost:3000",
@@ -17,21 +16,18 @@ fastify.register(cors, {
   credentials: true,
 });
 
-// Register routes
 fastify.register(turnRoutes, { prefix: "/api" });
 
-// Health check
 fastify.get("/", async (request, reply) => {
-  return { status: "ok", service: "omegle-backend" };
+  return { status: "ok", service: "backend" };
 });
 
 const start = async () => {
   try {
     await fastify.listen({ port: 3001, host: "0.0.0.0" });
     
-    // Initialize Socket.IO
     const io = initializeSocket(fastify.server);
-    console.log("✅ Socket.IO initialized");
+    console.log("Socket.IO initialized");
     
   } catch (err) {
     fastify.log.error(err);
