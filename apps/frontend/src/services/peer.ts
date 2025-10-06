@@ -149,7 +149,7 @@ class PeerService extends EventEmitter {
         throw new Error(errorMsg);
       }
     } catch (error) {
-      console.error("❌ Error setting remote description:", error);
+      console.error("Error setting remote description:", error);
       this.emit("error", {
         type: "remote-description",
         message: "Connection failed. Please try again.",
@@ -183,7 +183,6 @@ class PeerService extends EventEmitter {
 
   private async initializeConnection(): Promise<void> {
     try {
-      // Try TURN first with STUN fallback for better NAT traversal
       await this.initializeWithTurnAndStun();
     } catch (error) {
       console.error("Connection initialization failed", error);
@@ -338,7 +337,6 @@ class PeerService extends EventEmitter {
     const streamId = stream.id;
     const trackKind = event.track.kind;
 
-    // Get or create tracking info
     let trackingInfo = this._streamTracking.get(streamId);
     if (!trackingInfo) {
       trackingInfo = {
@@ -351,25 +349,22 @@ class PeerService extends EventEmitter {
       this._streamTracking.set(streamId, trackingInfo);
     }
 
-    // Update tracking
     if (trackKind === "audio") {
       trackingInfo.hasAudio = true;
     } else if (trackKind === "video") {
       trackingInfo.hasVideo = true;
     }
 
-    // Clear existing timeout
     if (trackingInfo.timeoutId) {
       clearTimeout(trackingInfo.timeoutId);
     }
 
-    // Emit stream when we have both tracks or after timeout
     trackingInfo.timeoutId = setTimeout(() => {
       if (!trackingInfo.emitted) {
         trackingInfo.emitted = true;
         this.emit("remoteStream", { stream: trackingInfo.stream });
       }
-    }, 1000); // Wait 1 second for both tracks
+    }, 1000);
   }
 
   // Track Management

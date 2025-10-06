@@ -38,18 +38,15 @@ export const initializeSocket = (server: HTTPServer) => {
 
   io.on("connection", (socket: Socket) => {
 
-    // User wants to find a match
     socket.on("find:match", () => {
       console.log(`${socket.id} looking for match`);
       
-      // Check if user is already in queue
       const alreadyInQueue = waitingQueue.some((item) => item.socketId === socket.id);
       if (alreadyInQueue) {
         console.log(`⚠️ ${socket.id} already in queue`);
         return;
       }
 
-      // Check if there's someone waiting
       if (waitingQueue.length > 0) {
         const partner = waitingQueue.shift()!;
         
