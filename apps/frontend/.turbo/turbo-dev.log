@@ -4,3 +4,159 @@ $ next dev --turbopack
  To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
    See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
  Detected additional lockfiles: 
+   * C:\Users\manis\omegle\apps\frontend\bun.lock
+   * C:\Users\manis\omegle\bun.lock
+
+   ▲ Next.js 15.5.4 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.103:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1286ms
+ ○ Compiling / ...
+Error: Can't resolve 'tailwindcss-animate' in 'C:\Users\manis\omegle\apps\frontend\src\app'
+    [2m[at finishWithoutResolve (C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:565:18)][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:657:14][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:718:5][0m
+    [2m[at eval (eval at create (C:\Users\manis\omegle\apps\frontend\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:718:5][0m
+    [2m[at eval (eval at create (C:\Users\manis\omegle\apps\frontend\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:718:5][0m
+    [2m[at eval (eval at create (C:\Users\manis\omegle\apps\frontend\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:718:5][0m {
+  details: "resolve 'tailwindcss-animate' in 'C:\\Users\\manis\\omegle\\apps\\frontend\\src\\app'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: C:\\Users\\manis\\omegle\\apps\\frontend\\package.json (relative path: ./src/app)\n' +
+    '    resolve as module\n' +
+    "      C:\\Users\\manis\\omegle\\apps\\frontend\\src\\app\\node_modules doesn't exist or is not a directory\n" +
+    "      C:\\Users\\manis\\omegle\\apps\\frontend\\src\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in C:\\Users\\manis\\omegle\\apps\\frontend\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: C:\\Users\\manis\\omegle\\apps\\frontend\\package.json (relative path: ./node_modules/tailwindcss-animate)\n' +
+    '            no extension\n' +
+    "              C:\\Users\\manis\\omegle\\apps\\frontend\\node_modules\\tailwindcss-animate doesn't exist\n" +
+    '            .css\n' +
+    "              C:\\Users\\manis\\omegle\\apps\\frontend\\node_modules\\tailwindcss-animate.css doesn't exist\n" +
+    "        C:\\Users\\manis\\omegle\\apps\\frontend\\node_modules\\tailwindcss-animate doesn't exist\n" +
+    "      C:\\Users\\manis\\omegle\\apps\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in C:\\Users\\manis\\omegle\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: C:\\Users\\manis\\omegle\\package.json (relative path: ./node_modules/tailwindcss-animate)\n' +
+    '            no extension\n' +
+    '              C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate is not a file\n' +
+    '            .css\n' +
+    "              C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate.css doesn't exist\n" +
+    '        existing directory C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\n' +
+    '          using description file: C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\package.json (relative path: .)\n' +
+    '            using description file: C:\\Users\\manis\\omegle\\package.json (relative path: ./node_modules/tailwindcss-animate)\n' +
+    '              no extension\n' +
+    '                C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate is not a file\n' +
+    '              .css\n' +
+    "                C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate.css doesn't exist\n" +
+    '              as directory\n' +
+    '                existing directory C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\n' +
+    '                  using description file: C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\package.json (relative path: .)\n' +
+    '                    using path: C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\index\n' +
+    '                      using description file: C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\package.json (relative path: ./index)\n' +
+    '                        no extension\n' +
+    "                          C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\index doesn't exist\n" +
+    '                        .css\n' +
+    "                          C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\index.css doesn't exist\n" +
+    '      looking for modules in C:\\Users\\manis\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: C:\\Users\\manis\\package.json (relative path: ./node_modules/tailwindcss-animate)\n' +
+    '            no extension\n' +
+    "              C:\\Users\\manis\\node_modules\\tailwindcss-animate doesn't exist\n" +
+    '            .css\n' +
+    "              C:\\Users\\manis\\node_modules\\tailwindcss-animate.css doesn't exist\n" +
+    "        C:\\Users\\manis\\node_modules\\tailwindcss-animate doesn't exist\n" +
+    "      C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      C:\\node_modules doesn't exist or is not a directory"
+}
+ ✓ Compiled / in 2.4s
+ ⨯ ./omegle/apps/frontend/src/app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: C:\Users\manis\omegle\apps\frontend\src\app\globals.css:1:1: Can't resolve 'tailwindcss-animate' in 'C:\Users\manis\omegle\apps\frontend\src\app'
+    [at Input.error (turbopack:///[project]/omegle/apps/frontend/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/omegle/apps/frontend/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (C:\Users\manis\omegle\apps\frontend\node_modules\@tailwindcss\postcss\dist\index.js:10:6913)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:95:5)]
+    [at LazyResult.runAsync (turbopack:///[project]/omegle/apps/frontend/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./omegle/apps/frontend/src/app/globals.css [Client Component Browser]
+    ./omegle/apps/frontend/src/app/layout.tsx [Client Component Browser]
+    ./omegle/apps/frontend/src/app/layout.tsx [Server Component]
+
+
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1074ms
+ GET / 500 in 3729ms
+ ✓ Compiled /favicon.ico in 442ms
+ GET /favicon.ico 500 in 537ms
+ ✓ Compiled / in 33ms
+ GET / 200 in 623ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 390ms
+ GET /favicon.ico?favicon.0b3bf435.ico 200 in 307ms
+ ✓ Compiled in 266ms
+Error: Can't resolve 'tailwindcss-animate' in 'C:\Users\manis\omegle\apps\frontend\src\app'
+    [2m[at finishWithoutResolve (C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:565:18)][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:657:14][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:718:5][0m
+    [2m[at eval (eval at create (C:\Users\manis\omegle\apps\frontend\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:718:5][0m
+    [2m[at eval (eval at create (C:\Users\manis\omegle\apps\frontend\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:718:5][0m
+    [2m[at eval (eval at create (C:\Users\manis\omegle\apps\frontend\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\manis\omegle\apps\frontend\node_modules\enhanced-resolve\lib\Resolver.js:718:5][0m {
+  details: "resolve 'tailwindcss-animate' in 'C:\\Users\\manis\\omegle\\apps\\frontend\\src\\app'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: C:\\Users\\manis\\omegle\\apps\\frontend\\package.json (relative path: ./src/app)\n' +
+    '    resolve as module\n' +
+    "      C:\\Users\\manis\\omegle\\apps\\frontend\\src\\app\\node_modules doesn't exist or is not a directory\n" +
+    "      C:\\Users\\manis\\omegle\\apps\\frontend\\src\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in C:\\Users\\manis\\omegle\\apps\\frontend\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: C:\\Users\\manis\\omegle\\apps\\frontend\\package.json (relative path: ./node_modules/tailwindcss-animate)\n' +
+    '            no extension\n' +
+    "              C:\\Users\\manis\\omegle\\apps\\frontend\\node_modules\\tailwindcss-animate doesn't exist\n" +
+    '            .css\n' +
+    "              C:\\Users\\manis\\omegle\\apps\\frontend\\node_modules\\tailwindcss-animate.css doesn't exist\n" +
+    "        C:\\Users\\manis\\omegle\\apps\\frontend\\node_modules\\tailwindcss-animate doesn't exist\n" +
+    "      C:\\Users\\manis\\omegle\\apps\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in C:\\Users\\manis\\omegle\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: C:\\Users\\manis\\omegle\\package.json (relative path: ./node_modules/tailwindcss-animate)\n' +
+    '            no extension\n' +
+    '              C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate is not a file\n' +
+    '            .css\n' +
+    "              C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate.css doesn't exist\n" +
+    '        existing directory C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\n' +
+    '          using description file: C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\package.json (relative path: .)\n' +
+    '            using description file: C:\\Users\\manis\\omegle\\package.json (relative path: ./node_modules/tailwindcss-animate)\n' +
+    '              no extension\n' +
+    '                C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate is not a file\n' +
+    '              .css\n' +
+    "                C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate.css doesn't exist\n" +
+    '              as directory\n' +
+    '                existing directory C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\n' +
+    '                  using description file: C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\package.json (relative path: .)\n' +
+    '                    using path: C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\index\n' +
+    '                      using description file: C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\package.json (relative path: ./index)\n' +
+    '                        no extension\n' +
+    "                          C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\index doesn't exist\n" +
+    '                        .css\n' +
+    "                          C:\\Users\\manis\\omegle\\node_modules\\tailwindcss-animate\\index.css doesn't exist\n" +
+    '      looking for modules in C:\\Users\\manis\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: C:\\Users\\manis\\package.json (relative path: ./node_modules/tailwindcss-animate)\n' +
+    '            no extension\n' +
+    "              C:\\Users\\manis\\node_modules\\tailwindcss-animate doesn't exist\n" +
+    '            .css\n' +
+    "              C:\\Users\\manis\\node_modules\\tailwindcss-animate.css doesn't exist\n" +
