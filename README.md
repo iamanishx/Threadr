@@ -1,9 +1,9 @@
 # Threadr 
-#### Omegle is no longer available; try this instead [Threadr](https://threadr.mbxd.xyz)
+### Omegle is no longer available; try this instead [Threadr](https://threadr.mbxd.xyz)
 
-# Threadr Application Architecture - Detailed Mermaid Diagrams
+#### Threadr Application Architecture - Detailed Mermaid Diagrams
 
-## 1. High-Level Architecture Overview
+##### 1. High-Level Architecture Overview
 
 ```mermaid
 graph TB
