@@ -19,7 +19,7 @@ graph TB
     subgraph "Server Layer"
         G[Node.js Backend]
         H[Socket.IO Server]
-        I[Express HTTP Server]
+        I[Fastify HTTP Server]
     end
 
     subgraph "Data Layer"
@@ -194,7 +194,7 @@ sequenceDiagram
     B->>B: Remove from Queue/Room
 ```
 
-## 4. WebRTC Signaling Flow
+## 4. WebRTC Signalling Flow
 
 ```mermaid
 stateDiagram-v2
@@ -223,59 +223,8 @@ stateDiagram-v2
     end note
 ```
 
-## 5. Backend Event Handling Flowchart
 
-```mermaid
-flowchart TD
-    A[Socket Connects] --> B{Event Type?}
-
-    B -->|find:match| C[Check if in Queue]
-    C -->|Already in Queue| D[Emit "queue:joined"]
-    C -->|Not in Queue| E{Check Queue Length}
-    E -->|>0| F[Pop Partner from Queue]
-    E -->|=0| G[Add to Queue, Emit "queue:joined"]
-
-    F --> H[Create Room ID]
-    H --> I[Join Both Sockets to Room]
-    I --> J[Update Maps: activeRooms, socketToRoomMap, socketToPartnerMap]
-    J --> K[Emit "match:found" to Partner (shouldInitiate=true)]
-    K --> L[Emit "match:found" to Current (shouldInitiate=false)]
-
-    B -->|user:call| M[Forward Offer to Target]
-    M --> N[Emit "incoming:call" to Target]
-
-    B -->|call:accepted| O[Forward Answer to Target]
-    O --> P[Emit "call:accepted" to Target]
-
-    B -->|peer:ice-candidate| Q[Forward ICE Candidate to Target]
-    Q --> R[Emit "peer:ice-candidate" to Target]
-
-    B -->|peer:nego:needed| S[Forward Negotiation Offer]
-    S --> T[Emit "peer:nego:needed" to Target]
-
-    B -->|peer:nego:done| U[Forward Negotiation Answer]
-    U --> V[Emit "peer:nego:final" to Target]
-
-    B -->|call:next| W[handleCallEnd(findNext=true)]
-    B -->|call:end| W
-
-    W --> X[Notify Partner "partner:left"]
-    X --> Y[Leave Room, Delete Maps]
-    Y --> Z{findNext?}
-    Z -->|true| AA[Emit "ready:next" to Current]
-    Z -->|false| BB[End]
-
-    B -->|disconnect| CC[handleDisconnect()]
-    CC --> DD[Remove from Queue/Room]
-    DD --> EE[Notify Partner if in Call]
-
-    style A fill:#e8f5e8
-    style B fill:#fff3e0
-    style L fill:#c8e6c9
-    style BB fill:#ffcdd2
-```
-
-## 6. Data Structures and State Management
+## 5. Data Structures and State Management
 
 ```mermaid
 classDiagram
@@ -337,135 +286,6 @@ classDiagram
     note for RoomData "Stored in activeRooms Map"
 ```
 
-## 7. Deployment and Infrastructure
-
-```mermaid
-graph LR
-    subgraph "Development"
-        DEV[Local Machine]
-        DEV -->|npm run dev| FE[Frontend: localhost:3000]
-        DEV -->|npm run dev| BE[Backend: localhost:3001]
-    end
-
-    subgraph "Production"
-        PROD[Cloud Server]
-        PROD -->|Next.js Build| FE_PROD[Frontend: Static Files]
-        PROD -->|Node.js| BE_PROD[Backend: Socket.IO Server]
-        PROD -->|Nginx| LB[Load Balancer]
-        LB --> FE_PROD
-        LB --> BE_PROD
-    end
-
-    subgraph "Scaling Options"
-        REDIS[(Redis)]
-        LB2[Load Balancer]
-        BE1[Backend Server 1]
-        BE2[Backend Server 2]
-        BE3[Backend Server 3]
-
-        LB2 --> BE1
-        LB2 --> BE2
-        LB2 --> BE3
-        BE1 --> REDIS
-        BE2 --> REDIS
-        BE3 --> REDIS
-    end
-
-    FE -.->|WebSocket| BE
-    FE_PROD -.->|WebSocket| BE_PROD
-    BE1 -.->|Adapter| BE2
-    BE2 -.->|Adapter| BE3
-
-    style DEV fill:#e3f2fd
-    style PROD fill:#f3e5f5
-    style REDIS fill:#fff3e0
-```
-
-## 8. Error Handling and Recovery
-
-```mermaid
-flowchart TD
-    A[Error Occurs] --> B{Error Type?}
-
-    B -->|WebRTC Connection| C[PeerService.handleConnectionFailure()]
-    B -->|Socket Disconnect| D[handlePartnerDisconnected()]
-    B -->|Media Access| E[setError("Failed to access camera/microphone")]
-    B -->|ICE Candidate| F[addIceCandidate() with Retry]
-
-    C --> G{Reconnect Attempts < Max?}
-    G -->|Yes| H[Increment Attempts, Wait, Retry]
-    G -->|No| I[Emit "error", Cleanup]
-
-    D --> J[Set State to "disconnected"]
-    D --> K[Cleanup PeerService]
-    D --> L[Auto-reconnect after 1s]
-
-    F --> M[Add to pendingCandidates]
-    F --> N[Process when remoteDescription set]
-
-    I --> O[User Sees Error Message]
-    L --> P[Find New Match]
-
-    style A fill:#ffcdd2
-    style O fill:#ffecb3
-    style P fill:#c8e6c9
-```
-
-## 9. Performance Considerations
-
-```mermaid
-pie title Memory Usage Breakdown (Estimated for 10k Users)
-    "Socket.IO Connections" : 60
-    "WebRTC Peer Connections" : 25
-    "In-Memory Data Structures" : 10
-    "Node.js Runtime" : 5
-```
-
-```mermaid
-gantt title Performance Timeline
-    dateFormat HH:mm:ss
-    axisFormat %H:%M
-
-    section User Journey
-    Page Load          :done, 00:00:00, 2s
-    Media Access       :done, 00:00:02, 1s
-    Socket Connect     :done, 00:00:03, 0.5s
-    Find Match         :active, 00:00:03.5, 5s
-    WebRTC Signaling   : 00:00:08.5, 3s
-    Connected          : 00:00:11.5, 300s
-```
-
-## 10. Security Considerations
-
-```mermaid
-flowchart LR
-    A[Client Request] --> B{CORS Check}
-    B -->|Allowed| C[Socket.IO Connection]
-    B -->|Blocked| D[Reject]
-
-    C --> E{Authentication?}
-    E -->|Required| F[Token Validation]
-    E -->|Optional| G[Proceed]
-
-    F -->|Valid| G
-    F -->|Invalid| H[Disconnect]
-
-    G --> I[WebRTC Signaling]
-    I --> J{Valid Room/User?}
-    J -->|Yes| K[Forward Message]
-    J -->|No| L[Ignore/Drop]
-
-    K --> M[Peer Connection]
-    M --> N{ICE Candidates Valid?}
-    N -->|Yes| O[Establish Connection]
-    N -->|No| P[Filter Out]
-
-    style A fill:#e8f5e8
-    style D fill:#ffcdd2
-    style H fill:#ffcdd2
-    style L fill:#ffecb3
-    style P fill:#ffecb3
-```
 
 ## Summary
 
