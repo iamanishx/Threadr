@@ -63,4 +63,5 @@ This Threadr application is a real-time video chat platform similar to Omegle, b
 - **Communication**: WebSocket for signaling, WebRTC for P2P video/audio
 - **Matching**: Queue-based random pairing system
 - **State Management**: In-memory data structures (scalable with Redis)
+
 Key features include automatic media access, real-time matching, WebRTC video calls, and graceful error handling with reconnection logic.
